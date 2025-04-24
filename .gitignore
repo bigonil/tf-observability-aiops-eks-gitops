@@ -1,0 +1,30 @@
+# Terraform state
+*.tfstate
+*.tfstate.*
+crash.log
+terraform.tfvars
+terraform.tfvars.json
+override.tf
+override.tf.json
+*.backup
+.terraform/
+
+# Local .terraform working directory
+.terraform.lock.hcl
+
+# Sensitive data files
+*.pem
+*.key
+*.crt
+*.kubeconfig
+
+# Editor/IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+*.log
+
+# OS files
+Thumbs.db
