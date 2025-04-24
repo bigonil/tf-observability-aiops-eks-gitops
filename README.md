@@ -11,28 +11,6 @@ Questo repository fornisce un'infrastruttura completa e scalabile per l'**osserv
 
 ---
 
-## 🧱 Struttura del repository
-
-```bash
-observability-eks-gitops/
-├── charts/                     # Helm charts per Opni, PredictKube, TicketBot
-│   ├── opni-observability/
-│   ├── predictkube-scaler/
-│   └── ticketbot/
-├── applications/               # Manifests ArgoCD Application
-├── ingress/                    # Ingress NGINX per Grafana e TicketBot
-├── secrets/                    # ExternalSecret da AWS Secrets Manager
-├── environments/               # Valori separati per ambienti dev/prod
-│   ├── dev/
-│   └── prod/
-├── .github/workflows/          # Pipeline GitHub Actions
-├── .gitlab-ci.yml              # Pipeline GitLab CI
-├── Jenkinsfile                 # Pipeline Jenkins
-└── README.md                   # Questa guida
-```
-
----
-
 ## 🚀 Deployment rapido su EKS
 
 1. Provisiona un cluster con `eksctl`:
