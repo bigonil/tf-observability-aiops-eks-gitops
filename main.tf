@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
+  region  = var.aws_region
   profile = "lb-aws-admin"
 }
 
@@ -108,9 +108,9 @@ module "eks" {
 ##################################
 
 resource "aws_eks_access_entry" "admin" {
-  cluster_name   = module.eks.cluster_name
-  principal_arn  = aws_iam_role.eks_admin_role.arn
-  type           = "STANDARD"
+  cluster_name  = module.eks.cluster_name
+  principal_arn = aws_iam_role.eks_admin_role.arn
+  type          = "STANDARD"
 
   tags = local.common_tags
 
