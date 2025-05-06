@@ -1,25 +1,28 @@
 
 ---
 
-### 📁 `modules/external_dns/README.md`
-
-```markdown
 # ExternalDNS Module
 
-Deploys the `external-dns` Helm chart and configures it to manage Route53 DNS records automatically based on Kubernetes Ingress annotations.
+This module deploys the [`external-dns`](https://github.com/kubernetes-sigs/external-dns) Helm chart and configures it to automatically manage AWS Route53 DNS records based on Kubernetes Ingress annotations.
 
-## Inputs
+---
 
-| Name             | Type        | Description                             | Default                |
-|------------------|-------------|-----------------------------------------|------------------------|
-| `domain_filters` | list(string)| List of domains to restrict management  | `["lb-aws-labs.link"]` |
+## 🚀 Requirements
 
-## Requirements
+- An EKS cluster with IAM Roles for Service Accounts (IRSA) configured to allow access to Route53.
+- AWS Route53 hosted zone(s) must already exist for the domain(s) being managed.
 
-- EKS IAM Role/IRSA properly configured to allow Route53 access
-- Hosted zone(s) must exist in AWS Route53
+---
 
-## Example Usage
+## 🔧 Inputs
+
+| Name             | Type         | Description                             | Default                  |
+|------------------|--------------|-----------------------------------------|--------------------------|
+| `domain_filters` | list(string) | List of domains to restrict management  | `["lb-aws-labs.link"]`   |
+
+---
+
+## 📦 Example Usage
 
 ```hcl
 module "external_dns" {
