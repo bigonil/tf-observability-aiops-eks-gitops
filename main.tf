@@ -127,3 +127,24 @@ resource "aws_eks_access_policy_association" "admin" {
 
   depends_on = [aws_eks_access_entry.admin]
 }
+
+module "external_dns" {
+  source         = "../../modules/external_dns"
+  domain_filters = ["lb-aws-labs.link"]
+}
+
+module "gateway_ingress" {
+  source        = "../../modules/ingress_dns"
+  host          = "aiopsgw.lb-aws-labs.link"
+  service_name  = "opni-gateway"
+  namespace     = "default"
+  tls_secret    = "gateway-tls"
+}
+
+module "grafana_ingress" {
+  source        = "../../modules/ingress_dns"
+  host          = "grafana.lb-aws-labs.link"
+  service_name  = "opni-grafana"
+  namespace     = "default"
+  tls_secret    = "grafana-tls"
+}
