@@ -1,17 +1,14 @@
+# Ingress with ExternalDNS Module
+
+This Terraform module creates a Kubernetes Ingress resource with the following features:
+
+- **ExternalDNS**: automatic DNS record creation
+- **TLS**: certificate management via cert-manager
+- **Routing**: directs traffic to internal Kubernetes services
 
 ---
 
-### 📁 `modules/ingress_dns/README.md`
-
-```markdown
-# Ingress with ExternalDNS Module
-
-Creates a Kubernetes Ingress resource with:
-- ExternalDNS auto-DNS support
-- TLS via cert-manager
-- Routing to internal services
-
-## Inputs
+## 📥 Inputs
 
 | Name          | Type   | Description                                      | Required |
 |---------------|--------|--------------------------------------------------|----------|
@@ -20,7 +17,9 @@ Creates a Kubernetes Ingress resource with:
 | `namespace`   | string | Namespace where service and ingress live        | ✅ Yes   |
 | `tls_secret`  | string | Name of the TLS secret to store the certificate | ✅ Yes   |
 
-## Example Usage
+---
+
+## 🚀 Example Usage
 
 ```hcl
 module "gateway_ingress" {
