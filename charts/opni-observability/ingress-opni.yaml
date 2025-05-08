@@ -1,0 +1,51 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: opni-gateway
+  namespace: opni-system
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/hostname: aiopsgw.lb-aws-labs.link
+spec:
+  tls:
+    - hosts:
+        - aiopsgw.lb-aws-labs.link
+      secretName: opni-gateway-tls
+  rules:
+    - host: aiopsgw.lb-aws-labs.link
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: opni
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: opni-grafana
+  namespace: opni-system
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/hostname: grafana.lb-aws-labs.link
+spec:
+  tls:
+    - hosts:
+        - grafana.lb-aws-labs.link
+      secretName: opni-grafana-tls
+  rules:
+    - host: grafana.lb-aws-labs.link
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: opni-grafana
+                port:
+                  number: 80
