@@ -46,6 +46,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: opni-grafana
+                name: opni-kube-prometheus-stack-grafana  # 👈 this must match actual SVC
                 port:
                   number: 80

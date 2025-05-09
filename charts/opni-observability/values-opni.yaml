@@ -4,24 +4,25 @@ gateway:
     provider: noauth
     noauth:
       grafanaHostname: grafana.lb-aws-labs.link
-
   persistence:
     enabled: true
     size: 5Gi
-    storageClass: gp3
     accessMode: ReadWriteOnce
+    storageClass: gp3
+
+opni-agent:
+  kube-prometheus-stack:
+    enabled: true
+    grafana:
+      enabled: true
+      defaultDashboardsEnabled: true
+
+opni-prometheus-crd:
+  enabled: false
 
 opni-nats:
   persistence:
     enabled: true
-    size: 10Gi
-    storageClass: gp3
+    size: 5Gi
     accessMode: ReadWriteOnce
-
-opni-agent:
-  kube-prometheus-stack:
-    grafana:
-      enabled: true
-
-opni-prometheus-crd:
-  enabled: false
+    storageClass: gp3
